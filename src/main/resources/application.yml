@@ -43,3 +43,8 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+
+#swagger configuration
+base:
+  package:
+    swagger: com.goodcitizens.api

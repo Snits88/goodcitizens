@@ -60,7 +60,7 @@ The microservice has an entire CRUD API for citizens managament:
 3) Update Citizen (PUT method: http://localhost:8080/api/goodcitizens/citizen/{code})
 4) Delete Citizen (DELETE method: http://localhost:8080/api/goodcitizens/citizen/{code})
 
-For more information about the APIs: http://localhost:8080/v2/api-docs. <br />
+For more information about the APIs: http://localhost:8080/v2/api-docs or http://localhost:8080/swagger-ui.html. <br />
 For health check (implemented with spring actuator) : http://localhost:8080/actuator/health. <br />
 All those rest calls can be invoked when the microservice is up and running. A postman collection is provided with all those rest calls. <br />
 
