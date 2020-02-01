@@ -21,6 +21,7 @@ public class Citizen implements Serializable {
     @Column(name = "name", length = 50)
     private String name;
 
+    @NotEmpty
     @Column(name = "surname", length = 50)
     private String surname;
 
@@ -28,6 +29,7 @@ public class Citizen implements Serializable {
     @Column(name = "nickname", length = 50)
     private String nickname;
 
+    @NotEmpty
     @Column(name = "password", length = 50)
     private String password;
 
@@ -35,6 +37,7 @@ public class Citizen implements Serializable {
     @Column(name = "email", length = 50)
     private String email;
 
+    @NotEmpty
     @Column(name = "country", length = 50)
     private String country;
 
