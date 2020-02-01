@@ -30,23 +30,33 @@
 					],
 					"query": [
 						{
-							"key": "surname",
+							"key": "name",
 							"value": "Palmer",
 							"disabled": true
 						},
 						{
-							"key": "enableOR",
+							"key": "surname",
 							"value": "true",
 							"disabled": true
 						},
 						{
-							"key": "name",
+							"key": "nickname",
 							"value": "Angelo",
 							"disabled": true
 						},
 						{
-							"key": "nickname",
+							"key": "email",
 							"value": "TheOne",
+							"disabled": true
+						},
+						{
+							"key": "country",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "enableOR",
+							"value": "",
 							"disabled": true
 						}
 					]

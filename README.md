@@ -50,10 +50,21 @@ The Bootstrap class is the class "Bootstrap". This class contained the main meth
 
 MICROSERVICE DESCRIPTION
 
-The microservice has an entire CRUD API for citizens managament and the scaffolding is divide in three layer: 
+The microservice has an entire CRUD API for citizens managament:
+1) Read Citizen with some filter as query param in AND or OR (name, surname, nickname, email, country) (GET method: http://localhost:8080/api/goodcitizens/citizen)
+2) Create Citizen (POST method: http://localhost:8080/api/goodcitizens/citizen)
+3) Update Citizen (PUT method: http://localhost:8080/api/goodcitizens/citizen/{code})
+4) Delete Citizen (DELETE method: http://localhost:8080/api/goodcitizens/citizen/{code})
+
+For more information about the APIs: http://localhost:8080/v2/api-docs
+For heath check (implemented with spring actuator) : http://localhost:8080/actuator/health
+A postman collection is provided with all those rest calls.
+
+The scaffolding microservice is divide in three layer: 
 1) Resourse: handler layer for the Rest Services
-2) Business : layer for data managament following the domain
+2) Business : layer for data managament and notification management
 3) Persistence : layer for data persistence on the database
 
-All business logic is collected in the business layer. Here data ara validated following basic rules and domain rules of the application (e.g valid emails format, unique nicknames and emails) and for uncorrect data custom exeption are provided.  
+All business logic is collected in the business layer. Here data ara validated following basic syntax and domain rules (e.g valid emails format, unique nicknames and emails, space normalization) and custom exeption are provided for uncorrect data.  
 The microservice uses functional interfaces for simplify management and implementation of new solutions avoiding massive refactoring.
+The microservice implements also a TO (Transfer Object) pattern for simplify object managament. 
