@@ -72,3 +72,4 @@ The scaffolding of the microservice is divided in three layer:
 All business logic is collected in the business layer. Here data are validated following basic syntax and domain rules (e.g valid emails format, unique nicknames and emails, space normalization) and custom exception are provided for uncorrected data.  <br />
 The microservice uses functional interfaces for simplify management and implementation of new solutions avoiding massive refactoring.<br />
 The microservice implements also a TO (Transfer Object) pattern for simplify object management. <br />
+Also the microservice implements a tracking mechanism to better track information and activities: this mechanism is an id, correlatioId. The id is searched among the headers of each request and if it is not present, a new id is generated. The id is also present in every notifications on Kafka.
