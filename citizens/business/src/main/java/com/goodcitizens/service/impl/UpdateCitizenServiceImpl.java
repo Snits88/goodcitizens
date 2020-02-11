@@ -4,6 +4,7 @@ import com.goodcitizens.converter.CitizenTOtoCitizenConveter;
 import com.goodcitizens.converter.CitizenToCitizenTOConveter;
 import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.exception.CitizenNotFoundExpection;
+import com.goodcitizens.persistence.api.CitizenPersistenceApi;
 import com.goodcitizens.persistence.model.Citizen;
 import com.goodcitizens.persistence.repository.CitizenBasicCrudRepository;
 import com.goodcitizens.service.ReadCitizensListService;
@@ -48,7 +49,7 @@ public class UpdateCitizenServiceImpl implements UpdateCitizenService {
     private NormalizeInputFieldBR normalizeInputFieldBR;
 
     @Autowired
-    private CitizenBasicCrudRepository citizenRepository;
+    private CitizenPersistenceApi citizenPersistenceApi;
 
     @Autowired
     private UpdateCitizenProducer updateCitizenProducer;
@@ -60,23 +61,16 @@ public class UpdateCitizenServiceImpl implements UpdateCitizenService {
         LogUtils.logInfo(logger, LogLevel.BUSINESS, LogUtilMsg.BUSINESS_UPDATE);
         LogUtils.logDebug(logger, LogLevel.BUSINESS, code);
         createUpdateCitizenFieldsBR.validateCitizenTO(input);
-        Long c = Long.valueOf(StringUtils.trim(code));
-        Optional<Citizen> citizenOp = citizenRepository.findById(c);
-        if(!citizenOp.isPresent()) {
+        CitizenTO search = citizenPersistenceApi.readByCode(code);
+        if(search == null) {
             throw new CitizenNotFoundExpection(ErrorMsg.CITIZEN_NOT_FOUND_MSG, ErrorMsg.CITIZEN_NOT_FOUND_CODE);
         }
         CitizenFilterTO searchFilter = createCitizenFilterTO(input);
         CitizenListTO searchResult = readCitizensListService.readList(searchFilter);
+        Long c = Long.valueOf(StringUtils.trim(code));
         nicknameEmailUpdateBR.validUpdate(c, searchResult);
-        Citizen citizen = citizenOp.get();
         CitizenTO normalize = normalizeInputFieldBR.normalize(input);
-        Citizen toUpdate = CitizenTOtoCitizenConveter.convert(normalize);
-        toUpdate.setCitizenId(c);
-        toUpdate.setCreateDate(citizen.getCreateDate());
-        Citizen updated = citizenRepository.save(toUpdate);
-        CitizenTO output = CitizenToCitizenTOConveter.convert(updated);
-        updateCitizenProducer.notify(output);
-        return output;
+        return citizenPersistenceApi.updateCitizen(code, normalize);
     }
 
     private void codeValidation(String code) {

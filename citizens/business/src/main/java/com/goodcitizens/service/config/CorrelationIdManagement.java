@@ -1,4 +1,4 @@
-package com.goodcitizens.config;
+package com.goodcitizens.service.config;
 
 import org.springframework.stereotype.Component;
 
@@ -7,8 +7,8 @@ import javax.annotation.PreDestroy;
 @Component("correlationIdManagement")
 public class CorrelationIdManagement {
 
-    static final String CORRELATION_ID_HEADER_NAME = "X-Correlation-Id";
-    static final String CORRELATION_ID_LOG_VAR_NAME = "correlationId";
+    public static final String CORRELATION_ID_HEADER_NAME = "X-Correlation-Id";
+    public static final  String CORRELATION_ID_LOG_VAR_NAME = "correlationId";
 
     private static final ThreadLocal<String> CORRELATION_ID = new ThreadLocal<>();
 

@@ -1,6 +1,6 @@
 package com.goodcitizens.service.producer.impl;
 
-import com.goodcitizens.config.CorrelationIdManagement;
+import com.goodcitizens.service.config.CorrelationIdManagement;
 import com.goodcitizens.service.converter.CitizenTOtoCitizenEventTOConverter;
 import com.goodcitizens.service.producer.DeleteCitizenProducer;
 import com.goodcitizens.service.streams.CitizenStreams;

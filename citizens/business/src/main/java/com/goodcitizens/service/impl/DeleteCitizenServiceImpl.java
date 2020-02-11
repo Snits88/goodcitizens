@@ -4,6 +4,7 @@ import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.exception.CitizenNotFoundExpection;
 import com.goodcitizens.persistence.api.CitizenPersistenceApi;
 import com.goodcitizens.service.DeleteCitizenService;
+import com.goodcitizens.service.producer.CreateCitizenProducer;
 import com.goodcitizens.service.producer.DeleteCitizenProducer;
 import com.goodcitizens.to.CitizenTO;
 import com.goodcitizens.utils.ErrorMsg;
@@ -40,8 +41,8 @@ public class DeleteCitizenServiceImpl implements DeleteCitizenService {
         if(search == null) {
             throw new CitizenNotFoundExpection(ErrorMsg.CITIZEN_NOT_FOUND_MSG, ErrorMsg.CITIZEN_NOT_FOUND_CODE);
         }
-        citizenPersistenceApi.deleteCitizen(code);
         deleteCitizenProducer.notify(search);
+        citizenPersistenceApi.deleteCitizen(code);
     }
 
     private void codeValidation(String code) {

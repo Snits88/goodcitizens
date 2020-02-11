@@ -7,6 +7,7 @@ import com.goodcitizens.service.businessrules.CreateUpdateCitizenFieldsBR;
 import com.goodcitizens.service.businessrules.NicknameEmailCreateBR;
 import com.goodcitizens.service.businessrules.NormalizeInputFieldBR;
 import com.goodcitizens.service.producer.CreateCitizenProducer;
+import com.goodcitizens.service.producer.DeleteCitizenProducer;
 import com.goodcitizens.to.CitizenFilterTO;
 import com.goodcitizens.to.CitizenListTO;
 import com.goodcitizens.to.CitizenTO;
@@ -39,10 +40,10 @@ public class CreateCitizenServiceImpl implements CreateCitizenService {
     private NormalizeInputFieldBR normalizeInputFieldBR;
 
     @Autowired
-    private CreateCitizenProducer createCitizenProducer;
+    private CitizenPersistenceApi citizenPersistenceApi;
 
     @Autowired
-    private CitizenPersistenceApi citizenPersistenceApi;
+    private CreateCitizenProducer createCitizenProducer;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = { RuntimeException.class })

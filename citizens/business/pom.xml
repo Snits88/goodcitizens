@@ -16,16 +16,20 @@
         <dependency>
             <groupId>com.goodcitizens</groupId>
             <artifactId>util</artifactId>
+            <scope>compile</scope>
         </dependency>
+
 
         <dependency>
             <groupId>com.goodcitizens</groupId>
             <artifactId>citizens-data</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.goodcitizens</groupId>
             <artifactId>citizens-to</artifactId>
+            <scope>compile</scope>
         </dependency>
         <!--INTERNAL DEPENDENCIES-->
 

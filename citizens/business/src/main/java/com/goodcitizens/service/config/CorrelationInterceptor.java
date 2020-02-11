@@ -1,4 +1,4 @@
-package com.goodcitizens.config;
+package com.goodcitizens.service.config;
 
 import com.goodcitizens.utils.LogLevel;
 import com.goodcitizens.utils.LogUtilMsg;
@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 
 @Component
+@Configuration
 public class CorrelationInterceptor extends HandlerInterceptorAdapter {
 
     final static Logger logger = Logger.getLogger(CorrelationInterceptor.class);
@@ -28,7 +30,7 @@ public class CorrelationInterceptor extends HandlerInterceptorAdapter {
                              final Object handler){
         LogUtils.logInfo(logger, LogLevel.CONFIGURATION, LogUtilMsg.CORRELATION_ID_INFO);
         final String correlationId = getCorrelationIdFromHeader(request);
-        MDC.put(CorrelationIdManagement.CORRELATION_ID_LOG_VAR_NAME, correlationId);
+        MDC.put(correlationIdManagement.CORRELATION_ID_LOG_VAR_NAME, correlationId);
         correlationIdManagement.setCorrelationId(correlationId);
         return true;
     }

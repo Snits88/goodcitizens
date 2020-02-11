@@ -6,7 +6,9 @@ import com.goodcitizens.to.CitizenFilterTO;
 import com.goodcitizens.to.CitizenListTO;
 import com.goodcitizens.to.CitizenTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("citizenPersistenceApi")
 public class CitizenPersistenceApiImpl implements CitizenPersistenceApi {
 
     @Autowired
