@@ -30,6 +30,7 @@ public class CitizenListToCitizenListTOConverter {
             }
         }
         citizenListTO.setCitizens(findOnDB);
+        citizenListTO.setTotalItems(Long.valueOf(findOnDB.size()));
         return citizenListTO;
     }
 }

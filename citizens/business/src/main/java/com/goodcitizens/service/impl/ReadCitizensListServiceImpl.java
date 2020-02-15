@@ -3,6 +3,8 @@ package com.goodcitizens.service.impl;
 import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.persistence.api.CitizenPersistenceApi;
 import com.goodcitizens.service.ReadCitizensListService;
+import com.goodcitizens.service.config.properties.OrderingProperties;
+import com.goodcitizens.service.config.properties.PaginationProperties;
 import com.goodcitizens.to.CitizenFilterTO;
 import com.goodcitizens.to.CitizenListTO;
 import com.goodcitizens.utils.*;
@@ -23,10 +25,17 @@ public class ReadCitizensListServiceImpl implements ReadCitizensListService {
     @Autowired
     private CitizenPersistenceApi citizenPersistenceApi;
 
+    @Autowired
+    private OrderingProperties orderingProperties;
+
+    @Autowired
+    private PaginationProperties paginationProperties;
+
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = { RuntimeException.class })
     public CitizenListTO readList(CitizenFilterTO searchFilter) {
         filterValidation(searchFilter);
+        menageOrderingAndPAgination(searchFilter);
         LogUtils.logInfo(logger, LogLevel.BUSINESS, LogUtilMsg.BUSINESS_READ);
         LogUtils.logDebug(logger, LogLevel.BUSINESS, searchFilter);
         CitizenListTO result = citizenPersistenceApi.readCitizensList(searchFilter);
@@ -61,6 +70,23 @@ public class ReadCitizensListServiceImpl implements ReadCitizensListService {
             if(!check){
                 throw new CitizenGenericExpection(ErrorMsg.INVALID_ORDER_BY_MSG, ErrorMsg.INVALID_ORDER_BY_CODE);
             }
+        }
+    }
+
+    private void menageOrderingAndPAgination(CitizenFilterTO searchFilter){
+        //Pagination
+        Integer offset = paginationProperties.getOffset();
+        Integer limit = paginationProperties.getLimit();
+        if(StringUtils.isEmpty(searchFilter.getOffset())){
+            searchFilter.setOffset(String.valueOf(offset));
+        }
+        if(StringUtils.isEmpty(searchFilter.getLimit())){
+            searchFilter.setLimit(String.valueOf(limit));
+        }
+        //Ordering
+        String orderBy = orderingProperties.getOrderBy();
+        if(StringUtils.isEmpty(searchFilter.getOrderBy())){
+            searchFilter.setOrderBy(String.valueOf(orderBy));
         }
     }
 }
