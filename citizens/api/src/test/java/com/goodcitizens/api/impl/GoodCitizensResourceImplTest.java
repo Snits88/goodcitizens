@@ -47,13 +47,13 @@ public class GoodCitizensResourceImplTest {
     private DeleteCitizenService deleteCitizenService;
 
 
-/*    @Test
+   @Test
     public void testWithReadCitizensListResource() {
         Mockito.when(readCitizensListService.readList(Mockito.any())).thenReturn(getCitizenListTO());
-        CitizenListTO citizenListTO = goodCitizensResource.readCitizensList("","","","",false);
+        CitizenListTO citizenListTO = goodCitizensResource.readCitizensList("","","","","", "", "", false, false);
         Assert.assertNotNull(citizenListTO);
         Assert.assertNotNull(citizenListTO.getCitizens());
-    } */
+    }
 
     @Test
     public void testWithCreateCitizensResource() {
