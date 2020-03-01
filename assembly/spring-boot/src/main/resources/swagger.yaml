@@ -1,0 +1,244 @@
+---
+swagger: "2.0"
+info:
+  description: "Good Citizens Microservice Swagger API Spec"
+  version: "v1.0"
+  title: "Swagger API Specification for Good Citizens Microservice"
+paths:
+  /api/goodcitizens/citizen:
+    get:
+      summary: "Returns all citizens"
+      description: "Query parameters are totally optional"
+      operationId: "readCitizensList"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "good ciziten's name"
+        required: false
+        type: "string"
+      - name: "surname"
+        in: "query"
+        description: "good ciziten's surnmane"
+        required: false
+        type: "string"
+      - name: "nickname"
+        in: "query"
+        description: "good ciziten's nickname"
+        required: false
+        type: "string"
+      - name: "email"
+        in: "query"
+        description: "good ciziten's email"
+        required: false
+        type: "string"
+      - name: "offset"
+        in: "query"
+        description: "parameter for pagination. it is the page to display and starts\
+          \ from zero"
+        required: false
+        type: "string"
+      - name: "limit"
+        in: "query"
+        description: "parameter for pagination. it defines the number of element for\
+          \ page"
+        required: false
+        type: "string"
+      - name: "orderBy"
+        in: "query"
+        description: "parameter for ordination"
+        required: false
+        type: "string"
+        enum:
+        - "[name"
+        - "surname"
+        - "nickname]"
+      - name: "orderAsc"
+        in: "query"
+        description: "parameter for ordination"
+        required: false
+        type: "boolean"
+        default: false
+        enum:
+        - "[true"
+        - "false]"
+      - name: "enableOR"
+        in: "query"
+        description: "parameter for setting search in OR or AND"
+        required: false
+        type: "boolean"
+        default: false
+        enum:
+        - "[true"
+        - "false]"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/CitizenListTO"
+    post:
+      summary: "Create a new Citizen"
+      description: ""
+      operationId: "createCitizen"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/CitizenTO"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/CitizenTO"
+        400:
+          description: "Business Rule Violated"
+          schema:
+            $ref: "#/definitions/ErrorTO"
+  /api/goodcitizens/citizen/{code}:
+    put:
+      summary: "Update an existing Citizen"
+      description: ""
+      operationId: "updateCitizen"
+      parameters:
+      - name: "code"
+        in: "path"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/CitizenTO"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/CitizenTO"
+        400:
+          description: "Business Rule Violated"
+          schema:
+            $ref: "#/definitions/ErrorTO"
+    delete:
+      summary: "Delete an existing Citizen"
+      description: ""
+      operationId: "deleteCitizen"
+      parameters:
+      - name: "code"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        404:
+          description: "Citizen Not Found"
+          schema:
+            $ref: "#/definitions/ErrorTO"
+definitions:
+  CitizenListTO:
+    type: "object"
+    properties:
+      totalItems:
+        type: "integer"
+        format: "int64"
+      citizens:
+        type: "array"
+        items:
+          $ref: "#/definitions/CitizenTO"
+  CitizenTO:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      surname:
+        type: "string"
+      nickname:
+        type: "string"
+      password:
+        type: "string"
+      email:
+        type: "string"
+      country:
+        type: "string"
+      code:
+        type: "integer"
+        format: "int64"
+  ErrorTO:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+        enum:
+        - "CONTINUE"
+        - "SWITCHING_PROTOCOLS"
+        - "PROCESSING"
+        - "CHECKPOINT"
+        - "OK"
+        - "CREATED"
+        - "ACCEPTED"
+        - "NON_AUTHORITATIVE_INFORMATION"
+        - "NO_CONTENT"
+        - "RESET_CONTENT"
+        - "PARTIAL_CONTENT"
+        - "MULTI_STATUS"
+        - "ALREADY_REPORTED"
+        - "IM_USED"
+        - "MULTIPLE_CHOICES"
+        - "MOVED_PERMANENTLY"
+        - "FOUND"
+        - "MOVED_TEMPORARILY"
+        - "SEE_OTHER"
+        - "NOT_MODIFIED"
+        - "USE_PROXY"
+        - "TEMPORARY_REDIRECT"
+        - "PERMANENT_REDIRECT"
+        - "BAD_REQUEST"
+        - "UNAUTHORIZED"
+        - "PAYMENT_REQUIRED"
+        - "FORBIDDEN"
+        - "NOT_FOUND"
+        - "METHOD_NOT_ALLOWED"
+        - "NOT_ACCEPTABLE"
+        - "PROXY_AUTHENTICATION_REQUIRED"
+        - "REQUEST_TIMEOUT"
+        - "CONFLICT"
+        - "GONE"
+        - "LENGTH_REQUIRED"
+        - "PRECONDITION_FAILED"
+        - "PAYLOAD_TOO_LARGE"
+        - "REQUEST_ENTITY_TOO_LARGE"
+        - "URI_TOO_LONG"
+        - "REQUEST_URI_TOO_LONG"
+        - "UNSUPPORTED_MEDIA_TYPE"
+        - "REQUESTED_RANGE_NOT_SATISFIABLE"
+        - "EXPECTATION_FAILED"
+        - "I_AM_A_TEAPOT"
+        - "INSUFFICIENT_SPACE_ON_RESOURCE"
+        - "METHOD_FAILURE"
+        - "DESTINATION_LOCKED"
+        - "UNPROCESSABLE_ENTITY"
+        - "LOCKED"
+        - "FAILED_DEPENDENCY"
+        - "UPGRADE_REQUIRED"
+        - "PRECONDITION_REQUIRED"
+        - "TOO_MANY_REQUESTS"
+        - "REQUEST_HEADER_FIELDS_TOO_LARGE"
+        - "UNAVAILABLE_FOR_LEGAL_REASONS"
+        - "INTERNAL_SERVER_ERROR"
+        - "NOT_IMPLEMENTED"
+        - "BAD_GATEWAY"
+        - "SERVICE_UNAVAILABLE"
+        - "GATEWAY_TIMEOUT"
+        - "HTTP_VERSION_NOT_SUPPORTED"
+        - "VARIANT_ALSO_NEGOTIATES"
+        - "INSUFFICIENT_STORAGE"
+        - "LOOP_DETECTED"
+        - "BANDWIDTH_LIMIT_EXCEEDED"
+        - "NOT_EXTENDED"
+        - "NETWORK_AUTHENTICATION_REQUIRED"
+      errors:
+        type: "array"
+        items:
+          type: "object"
+      msg:
+        type: "string"
+      code:
+        type: "string"

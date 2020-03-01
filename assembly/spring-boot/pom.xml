@@ -94,7 +94,7 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
+            <version>${jackson-mapper-asl.version}</version>
         </dependency>
         <!--End Dependencies for Apache Kafka Management-->
 
@@ -160,6 +160,41 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!--Plugin for generating json and/or yaml files specification from api and controller classes-->
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>${swagger-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <info>
+                                <title>Swagger API Specification for Good Citizens Microservice</title>
+                                <version>v1.0</version>
+                                <description>Good Citizens Microservice Swagger API Spec</description>
+                            </info>
+                            <!--Add here all api for generating file specification in json and yaml file-->
+                            <locations>
+                                <location>com.goodcitizens.api</location>
+                                <location>com.goodcitizens.api.impl</location>
+                            </locations>
+                            <springmvc>true</springmvc>
+                            <outputFormats>json,yaml</outputFormats>
+                            <swaggerDirectory>
+                                ${project.build.directory}/generated/swagger-api
+                            </swaggerDirectory>
+                        </apiSource>
+                    </apiSources>
                 </configuration>
             </plugin>
         </plugins>

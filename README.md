@@ -3,7 +3,7 @@ Good Citizens microservice
 
 This is a little Microservice developed with Maven, Java, Spring Boot and Apache Kafka.
 
-COMPILE AND EXECUTION INFORMATION
+##### COMPILE AND EXECUTION INFORMATION
 
 A Maven installation is required to compile, to execute Junit Tests and to start the application.
 Useful Maven Commands:
@@ -23,25 +23,32 @@ Kafka up and running is necessary for starting the application.
 
 From Kafka folder the following commands must be used in sequence to start Kafka:
 1) start Zookeeper Broker: <br />
+```
 bin\windows\zookeeper-server-start.bat config\zookeeper.properties (on windows systems)
 bin/zookeeper-server-start.bat config/zookeeper.properties (on linux systems)
+```
 2) start Kafka: <br />
+```
 bin\windows\kafka-server-start.bat config\server.properties (on windows systems)
 bin/kafka-server-start.bat config/server.properties (on linux systems)
+```
 
 The following command can be used to read info from topics (where notification where send) After starting Kafka: <br />
-bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic create_citizens --from-beginning (on windows systems) <br />
-bin/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic create_citizens --from-beginning (on linux systems) <br />
+```
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic create_citizens --from-beginning (on windows systems)
+bin/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic create_citizens --from-beginning (on linux systems) 
 
-bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic update_citizens --from-beginning (on windows systems) <br />
-bin/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic update_citizens --from-beginning (on linux systems) <br />
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic update_citizens --from-beginning (on windows systems)
+bin/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic update_citizens --from-beginning (on linux systems)
 
-bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic delete_citizens --from-beginning (on windows systems) <br />
-bin/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic delete_citizens --from-beginning (on linux systems) <br />
-
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic delete_citizens --from-beginning (on windows systems)
+bin/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic delete_citizens --from-beginning (on linux systems)
+```
 Show topic list: <br />
-bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092 (on windows systems) <br />
-bin/kafka-topics.bat --list --bootstrap-server localhost:9092 (on linux systems) <br />
+```
+bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092 (on windows systems)
+bin/kafka-topics.bat --list --bootstrap-server localhost:9092 (on linux systems)
+```
 
 The microservice creates automatically three topics:
 - create_citizens : topic where info about new citizens created were notified
@@ -52,7 +59,7 @@ The microservice uses different topics, one for each data modification type (Cre
 <br />
 The Bootstrap class is the class "Bootstrap". This class contained the main method.
 
-MICROSERVICE DESCRIPTION
+##### MICROSERVICE DESCRIPTION
 
 The microservice has an entire CRUD API for citizens managament:
 1) Read Citizens with some optional filters as query param in AND or OR (name, surname, nickname, email, country) (GET method: http://localhost:8080/api/goodcitizens/citizen). By default filters are in AND         

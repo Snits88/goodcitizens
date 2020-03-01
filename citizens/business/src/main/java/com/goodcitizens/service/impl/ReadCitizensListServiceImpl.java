@@ -35,7 +35,7 @@ public class ReadCitizensListServiceImpl implements ReadCitizensListService {
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = { RuntimeException.class })
     public CitizenListTO readList(CitizenFilterTO searchFilter) {
         filterValidation(searchFilter);
-        menageOrderingAndPAgination(searchFilter);
+        menageOrderingAndPagination(searchFilter);
         LogUtils.logInfo(logger, LogLevel.BUSINESS, LogUtilMsg.BUSINESS_READ);
         LogUtils.logDebug(logger, LogLevel.BUSINESS, searchFilter);
         CitizenListTO result = citizenPersistenceApi.readCitizensList(searchFilter);
@@ -73,7 +73,7 @@ public class ReadCitizensListServiceImpl implements ReadCitizensListService {
         }
     }
 
-    private void menageOrderingAndPAgination(CitizenFilterTO searchFilter){
+    private void menageOrderingAndPagination(CitizenFilterTO searchFilter){
         //Pagination
         Integer offset = paginationProperties.getOffset();
         Integer limit = paginationProperties.getLimit();
