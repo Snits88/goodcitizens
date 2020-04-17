@@ -2,7 +2,6 @@ package com.goodcitizens.service.impl;
 
 import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.persistence.api.CitizenPersistenceApi;
-import com.goodcitizens.persistence.model.Citizen;
 import com.goodcitizens.service.CreateCitizenService;
 import com.goodcitizens.service.ReadCitizensListService;
 import com.goodcitizens.service.businessrules.CreateUpdateCitizenFieldsBR;

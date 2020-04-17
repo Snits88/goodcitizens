@@ -4,13 +4,13 @@ import com.goodcitizens.utils.LogLevel;
 import com.goodcitizens.utils.LogUtilMsg;
 import com.goodcitizens.utils.LogUtils;
 import org.apache.commons.lang3.StringUtils;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;

@@ -3,7 +3,10 @@ package com.goodcitizens.api;
 import com.goodcitizens.to.CitizenListTO;
 import com.goodcitizens.to.CitizenTO;
 import com.goodcitizens.to.ErrorTO;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Api
 public interface GoodCitizensResource {

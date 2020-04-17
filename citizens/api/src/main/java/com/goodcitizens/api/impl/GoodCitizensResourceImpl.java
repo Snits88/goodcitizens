@@ -1,7 +1,9 @@
 package com.goodcitizens.api.impl;
 
 import com.goodcitizens.api.GoodCitizensResource;
-import com.goodcitizens.service.*;
+import com.goodcitizens.service.CreateCitizenService;
+import com.goodcitizens.service.DeleteCitizenService;
+import com.goodcitizens.service.ReadCitizensListService;
 import com.goodcitizens.service.UpdateCitizenService;
 import com.goodcitizens.to.CitizenFilterTO;
 import com.goodcitizens.to.CitizenListTO;

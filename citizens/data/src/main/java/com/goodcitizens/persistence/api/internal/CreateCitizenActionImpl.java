@@ -3,7 +3,6 @@ package com.goodcitizens.persistence.api.internal;
 import com.goodcitizens.converter.CitizenTOtoCitizenConveter;
 import com.goodcitizens.converter.CitizenToCitizenTOConveter;
 import com.goodcitizens.persistence.model.Citizen;
-
 import com.goodcitizens.persistence.repository.CitizenBasicCrudRepository;
 import com.goodcitizens.to.CitizenTO;
 import org.springframework.beans.factory.annotation.Autowired;

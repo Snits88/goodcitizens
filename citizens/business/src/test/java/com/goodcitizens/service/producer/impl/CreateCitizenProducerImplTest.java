@@ -2,7 +2,6 @@ package com.goodcitizens.service.producer.impl;
 
 import com.goodcitizens.service.config.CorrelationIdManagement;
 import com.goodcitizens.service.config.CorrelationInterceptor;
-import com.goodcitizens.service.config.EnableStreams;
 import com.goodcitizens.service.converter.CitizenTOtoCitizenEventTOConverter;
 import com.goodcitizens.service.producer.CreateCitizenProducer;
 import com.goodcitizens.service.streams.CitizenStreams;

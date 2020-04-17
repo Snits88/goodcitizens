@@ -4,7 +4,6 @@ import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.exception.CitizenNotFoundExpection;
 import com.goodcitizens.persistence.api.CitizenPersistenceApi;
 import com.goodcitizens.service.DeleteCitizenService;
-import com.goodcitizens.service.producer.CreateCitizenProducer;
 import com.goodcitizens.service.producer.DeleteCitizenProducer;
 import com.goodcitizens.to.CitizenTO;
 import com.goodcitizens.utils.ErrorMsg;

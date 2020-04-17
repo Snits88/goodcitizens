@@ -1,12 +1,8 @@
 package com.goodcitizens.service.impl;
 
-import com.goodcitizens.converter.CitizenTOtoCitizenConveter;
-import com.goodcitizens.converter.CitizenToCitizenTOConveter;
 import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.exception.CitizenNotFoundExpection;
 import com.goodcitizens.persistence.api.CitizenPersistenceApi;
-import com.goodcitizens.persistence.model.Citizen;
-import com.goodcitizens.persistence.repository.CitizenBasicCrudRepository;
 import com.goodcitizens.service.ReadCitizensListService;
 import com.goodcitizens.service.UpdateCitizenService;
 import com.goodcitizens.service.businessrules.CreateUpdateCitizenFieldsBR;
@@ -27,8 +23,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 @Service
 @Component("updateCitizenService")

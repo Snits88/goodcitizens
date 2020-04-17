@@ -2,8 +2,6 @@ package com.goodcitizens.service.impl;
 
 import com.goodcitizens.exception.CitizenGenericExpection;
 import com.goodcitizens.persistence.api.CitizenPersistenceApi;
-import com.goodcitizens.persistence.model.Citizen;
-import com.goodcitizens.persistence.repository.CitizenBasicCrudRepository;
 import com.goodcitizens.service.ReadCitizensListService;
 import com.goodcitizens.service.config.properties.OrderingProperties;
 import com.goodcitizens.service.config.properties.PaginationProperties;

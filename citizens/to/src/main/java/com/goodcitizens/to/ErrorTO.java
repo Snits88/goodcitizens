@@ -1,13 +1,12 @@
 package com.goodcitizens.to;
 
-import java.util.Arrays;
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.http.HttpStatus;
+
+import java.util.Arrays;
+import java.util.List;
 
 @JsonInclude(Include.NON_NULL)
 public class ErrorTO {
