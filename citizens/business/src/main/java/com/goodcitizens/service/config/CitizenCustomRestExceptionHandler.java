@@ -1,4 +1,4 @@
-package com.goodcitizens.config;
+package com.goodcitizens.service.config;
 
 
 import com.goodcitizens.exception.CitizenGenericExpection;

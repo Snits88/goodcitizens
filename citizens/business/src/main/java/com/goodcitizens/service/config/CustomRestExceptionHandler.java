@@ -1,4 +1,4 @@
-package com.goodcitizens.config;
+package com.goodcitizens.service.config;
 
 import java.util.Arrays;
 import java.util.List;
